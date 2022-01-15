@@ -1,0 +1,1093 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Rubik&display=swap');
+:root {
+    --animateDuration: 5s;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #1E2140;
+    color: white;
+    overflow: hidden;
+}
+
+.para {
+    max-width: 80%;
+    margin: 2rem auto;
+    text-align: center;
+}
+
+.head {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: bolder;
+    font-family: Montserrat;
+    color: #E4E7FF;
+    user-select: none;
+}
+
+.selectBar {
+    height: 4.5rem;
+    max-width: 35vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 4rem auto 0 auto;
+    border-radius: 100px;
+    text-align: center;
+    background: #131731;
+    padding: 7px;
+}
+
+.selectBar>span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    border-radius: 100px;
+    padding: 0 2.5rem;
+    cursor: pointer;
+    user-select: none;
+}
+
+.selectBar>span:nth-child(1) {
+    letter-spacing: 0;
+}
+
+.sbBackground {
+    background: #F77271;
+    color: #ffffffe7;
+}
+
+.pomoNav {
+    font-size: 1.25rem;
+    font-family: montserrat;
+}
+
+.outsideClock {
+    position: relative;
+    height: 30rem;
+    width: 25vw;
+    border-radius: 50%;
+    background: #151932;
+    margin: 3.5rem auto;
+    box-shadow: inset 0 0 2px 30px #2c2851da, -1rem -1rem 35px 5px #232955b0, -35px -20px 50px 5px #212447, 2px 5px 15px 10px rgba(23, 12, 37, 0.795);
+}
+
+.clock {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    box-shadow: inset 80px 3.5rem 50px 20px #151932;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* box-shadow: inset 0 0 2px 40px red; */
+}
+
+.time {
+    /* display: inline-block; */
+    height: max-content;
+    min-width: 100%;
+    text-align: center;
+    font-size: 7rem;
+    font-family: rubik;
+    position: absolute;
+    top: 47%;
+    left: 47%;
+    padding-left: 1.5rem;
+    transform: translate(-50%, -50%);
+    user-select: none;
+    text-shadow: 3px 5px 2px #505997;
+    mix-blend-mode: screen;
+}
+
+.pause {
+    width: 100%;
+    letter-spacing: 12px;
+    text-align: center;
+    position: absolute;
+    top: 70%;
+    font-size: 1.1rem;
+    font-family: montserrat;
+    user-select: none;
+    color: rgba(255, 255, 255, 0.76);
+    text-shadow: -0.5px 2px 2px #505997;
+    mix-blend-mode: screen;
+}
+
+.settIcon {
+    width: 100%;
+    margin: auto;
+    text-align: center;
+    font-size: 2rem;
+    opacity: 0.6;
+    position: relative;
+    cursor: pointer;
+}
+
+.settIcon:hover {
+    opacity: 0.7;
+}
+
+svg {
+    transform: rotateZ(-90deg);
+}
+
+.rotateBar {
+    stroke-linecap: round;
+    stroke-dashoffset: 0;
+    animation: rotate var(--animateDuration) linear;
+}
+
+@keyframes rotate {
+    100% {
+        stroke-dashoffset: 1310;
+    }
+}
+
+.rotateBack {
+    animation: rotateback 1ms ease;
+}
+
+@keyframes rotateback {
+    0% {
+        stroke-dashoffset: 0;
+    }
+    100% {
+        stroke-dashoffset: 1310;
+    }
+}
+
+
+/* Settings Part */
+
+.settingsWrapper {
+    display: none;
+    width: 35vw;
+    height: 57vh;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #ffffff;
+    border-radius: 30px;
+    color: #1F1F20;
+    user-select: none;
+}
+
+.navSett {
+    height: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: space-between;
+}
+
+.settHead {
+    height: max-content;
+    width: 37%;
+    font-size: 2.1rem;
+    font-weight: bold;
+    font-family: rubik;
+    text-align: left;
+    margin-top: 2.2rem;
+}
+
+.times {
+    height: max-content;
+    width: 50%;
+    margin-top: 2.2rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: right;
+    padding-top: 0.8rem;
+    color: #8d8b9394;
+}
+
+.times:hover {
+    cursor: pointer;
+    color: #8d8b93be;
+}
+
+hr {
+    color: #f7f7f762;
+}
+
+.settFlex {
+    min-height: 25%;
+    width: 95%;
+    margin-top: 2rem;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: auto;
+}
+
+.sameP {
+    font-size: 1.5rem;
+}
+
+.inp {
+    height: 3rem;
+    width: 100%;
+    user-select: none;
+    border-radius: 10px;
+    background: #EEF1FA;
+    border: none;
+    outline: none;
+    padding: 7px;
+    font-size: 1.2rem;
+}
+
+input[type=number]::-webkit-inner-spin-button {
+    opacity: 0;
+}
+
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: inner-spin-button !important;
+    width: 5px;
+    position: absolute;
+    top: 0;
+    width: 25%;
+    right: 8%;
+    height: 100%;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.upArrow {
+    display: inline-block;
+    position: relative;
+    left: calc(100% - 30px);
+    bottom: 2.9rem;
+    min-width: max-content;
+    min-height: max-content;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    pointer-events: none;
+}
+
+.downArrow {
+    display: inline-block;
+    position: relative;
+    left: calc(100% - 48.5px);
+    bottom: 1.9rem;
+    min-width: max-content;
+    min-height: max-content;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    pointer-events: none;
+}
+
+.settTime {
+    font-size: 1rem;
+    height: 85%;
+    width: 27.5%;
+    text-align: left;
+    line-height: 2;
+    color: #BDBCC2;
+}
+
+.settTimeHead {
+    font-family: montserrat;
+    letter-spacing: 2px;
+    margin-bottom: 0.5rem;
+    padding-left: 2.7rem;
+    padding-top: 2rem;
+    font-size: 1.2rem;
+}
+
+.half {
+    width: 87%;
+    margin: auto;
+}
+
+.fontFlex {
+    width: 88%;
+    height: 18%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: auto;
+}
+
+.fontSpans {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    width: 35%;
+    height: 80%;
+}
+
+.fontSpans>div {
+    display: inline-flex;
+    height: 3rem;
+    width: 3rem;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    margin-left: 15px;
+    cursor: pointer;
+}
+
+.fontDivs {
+    background: rgb(236, 236, 236);
+}
+
+.fontSpans>div:nth-child(1) {
+    font-family: lato;
+}
+
+.fontSpans>div:nth-child(2) {
+    font-family: rubik;
+}
+
+.fontSpans>div:nth-child(3) {
+    font-family: montserrat;
+}
+
+.selectedFont {
+    background: #161934;
+    color: white;
+}
+
+.fontFlex>p {
+    font-size: 1.25rem;
+    font-family: montserrat;
+    letter-spacing: 2px;
+}
+
+.colorSpans {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    width: 35%;
+    height: 80%;
+}
+
+.colorFlex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 18%;
+    width: 88%;
+    margin: auto;
+}
+
+.colorSpans>div {
+    display: inline-flex;
+    height: 3rem;
+    width: 3rem;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    margin-left: 15px;
+    cursor: pointer;
+}
+
+.colorSpans>div:nth-child(1) {
+    background: #F06D6D;
+    object-fit: cover;
+    color: #131731;
+}
+
+.colorSpans>div:nth-child(2) {
+    background: #74f2f4d2;
+}
+
+.colorSpans>div:nth-child(3) {
+    background: #d683f6d7;
+}
+
+.colorDivs {
+    opacity: 0.8;
+}
+
+.notSelectedColor:hover {
+    opacity: 1;
+}
+
+.colorFlex>p {
+    font-size: 1.25rem;
+    font-family: montserrat;
+    letter-spacing: 2px;
+}
+
+.btnCont {
+    width: 100%;
+    text-align: center;
+}
+
+.apply {
+    height: 4rem;
+    width: 12rem;
+    background: #F87070;
+    color: white;
+    font-size: 1.25rem;
+    font-family: sans-serif;
+    border: none;
+    outline: none;
+    border-radius: 30px;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+
+.apply:hover {
+    background: #ff6565;
+}
+
+
+/* Bigger than Desktop */
+
+@media screen and (min-width: 1401px) and (max-width: 1800px) {
+    .selectBar {
+        max-width: 42vw;
+    }
+    .outsideClock {
+        width: 30rem;
+        height: 30rem;
+    }
+    .clock {
+        width: 30rem;
+    }
+    .settingsWrapper {
+        width: 40vw;
+    }
+}
+
+@media screen and (min-width: 1101px) and (max-width: 1400px) {
+    .selectBar {
+        max-width: 45vw;
+    }
+    .outsideClock {
+        width: 30rem;
+        height: 30rem;
+    }
+    .clock {
+        width: 30rem;
+    }
+    .settingsWrapper {
+        width: 47vw;
+    }
+}
+
+
+/* For Desktop View */
+
+@media screen and (min-width: 1024px) and (max-width: 1100px) {
+    .selectBar {
+        max-width: 59vw;
+    }
+    .outsideClock {
+        width: 30rem;
+        height: 30rem;
+    }
+    .clock {
+        width: 30rem;
+    }
+    .settingsWrapper {
+        width: 55vw;
+    }
+}
+
+
+/* For Tablet View */
+
+@media screen and (min-width: 850px) and (max-width: 1024px) {
+    .selectBar {
+        max-width: 67vw;
+    }
+    .outsideClock {
+        width: 30rem;
+    }
+    .clock {
+        width: 30rem;
+    }
+    .pomoNav {
+        font-size: 1.25rem;
+    }
+    body {
+        overflow-x: hidden;
+    }
+    .settingsWrapper {
+        width: 59vw;
+    }
+}
+
+
+/* For Small Tablet */
+
+@media screen and (min-width: 768px) and (max-width: 850px) {
+    .selectBar {
+        max-width: 75vw;
+    }
+    .outsideClock {
+        width: 30rem;
+    }
+    .clock {
+        width: 30rem;
+    }
+    .pomoNav {
+        font-size: 1.1rem;
+    }
+    body {
+        overflow-x: hidden;
+    }
+    .settingsWrapper {
+        width: 64vw;
+    }
+    .spansDiv {
+        width: 55%;
+    }
+    .changeDir>p {
+        font-size: 1.2rem;
+    }
+}
+
+
+/* For long mobile   */
+
+
+/* marked place */
+
+@media screen and (min-width: 500px) and (max-width: 767px) {
+    .selectBar {
+        max-width: 95vw;
+    }
+    .outsideClock {
+        width: 30rem;
+    }
+    .clock {
+        width: 30rem;
+    }
+    .pomoNav {
+        font-size: 1rem;
+    }
+    body {
+        overflow-x: hidden;
+    }
+    .settingsWrapper {
+        width: 90vw;
+    }
+}
+
+
+/* end */
+
+
+/* For very short mobile */
+
+@media screen and (min-width: 300px) and (max-width: 499px) and (min-height: 400px) and (max-height: 599px) {
+    .selectBar {
+        max-width: 95vw;
+        margin-top: 1rem;
+        margin-top: -1rem;
+    }
+    .outsideClock {
+        width: 17.5rem;
+        height: 17.5rem;
+        margin-top: 1rem;
+        box-shadow: inset 0 0 2px 30px #2c2851da, -1rem -1rem 35px 5px #232955b0, -35px -20px 50px 5px #212447, 2px 5px 15px 10px rgba(23, 12, 37, 0.795);
+    }
+    .clock {
+        width: 17.5rem;
+        height: 17.5rem;
+        box-shadow: inset 80px 3.5rem 50px 5px #151932
+    }
+    .pomoNav {
+        min-width: 20%;
+        font-size: 1rem;
+    }
+    svg {
+        position: absolute;
+        bottom: -6rem;
+    }
+    circle {
+        r: 105;
+    }
+    .time {
+        font-size: 4rem;
+    }
+    .pause {
+        font-size: 0.9rem;
+        padding-left: 1rem;
+    }
+    body {
+        overflow: hidden;
+    }
+    i {
+        position: relative;
+        bottom: 3rem;
+    }
+    .settingsWrapper {
+        height: 88vh;
+        width: 95vw;
+        border-radius: 10px;
+    }
+    .settFlex {
+        flex-direction: column;
+    }
+    .settTime {
+        display: flex;
+        align-items: flex-start;
+        flex-direction: row;
+        width: 95%;
+        margin: auto;
+        height: 3.5rem;
+    }
+    .changeDir {
+        width: 100%;
+    }
+    .changeDir>p {
+        display: inline-block;
+        width: 47%;
+        font-size: 1.1rem;
+    }
+    .changeDir>input {
+        width: 50%;
+        display: inline-block;
+        padding-left: 10px;
+    }
+    .navSett>i {
+        position: relative;
+        bottom: 0.1rem;
+    }
+    .spansCont {
+        width: 90%;
+        height: 16%;
+    }
+    .spansDiv {
+        width: 70%;
+    }
+    .spansDiv>div {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+    .apply {
+        width: 9rem;
+        height: 3rem;
+        position: relative;
+        bottom: 0.2rem;
+    }
+    .settTimeHead {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        height: 2rem;
+        margin-bottom: 1rem;
+        font-size: 1rem;
+        padding-right: 3rem;
+        padding-top: 0.9rem;
+    }
+    .spansCont>p {
+        font-size: 1rem;
+    }
+    .settHead {
+        font-size: 2rem;
+    }
+}
+
+
+/* For short mobile */
+
+@media screen and (min-width: 300px) and (max-width: 499px) and (min-height: 600px) and (max-height: 750px) {
+    .selectBar {
+        max-width: 95vw;
+        margin-top: 2rem;
+    }
+    .outsideClock {
+        width: 20rem;
+        height: 20rem;
+    }
+    .clock {
+        width: 20rem;
+        height: 20rem;
+    }
+    .pomoNav {
+        min-width: 20%;
+        font-size: 1rem;
+    }
+    svg {
+        position: absolute;
+        bottom: -5rem;
+    }
+    circle {
+        r: 120;
+    }
+    .time {
+        font-size: 5rem;
+    }
+    .pause {
+        font-size: 1rem;
+        padding-left: 1rem;
+    }
+    body {
+        overflow: hidden;
+    }
+    .settIcon {
+        display: none;
+        margin-top: -3.5rem;
+    }
+    /* paste */
+    .settingsWrapper {
+        height: 85vh;
+        width: 95vw;
+        border-radius: 10px;
+    }
+    .settFlex {
+        flex-direction: column;
+    }
+    .settTime {
+        display: flex;
+        align-items: flex-start;
+        flex-direction: row;
+        width: 95%;
+        margin: auto;
+        height: 3.5rem;
+    }
+    .changeDir {
+        width: 100%;
+    }
+    .changeDir>p {
+        display: inline-block;
+        width: 47%;
+        font-size: 1.1rem;
+    }
+    .changeDir>input {
+        width: 50%;
+        display: inline-block;
+        padding-left: 10px;
+    }
+    .navSett>i {
+        position: relative;
+        bottom: 0.1rem;
+    }
+    .spansCont {
+        width: 90%;
+        height: 16%;
+    }
+    .spansDiv {
+        width: 70%;
+    }
+    .spansDiv>div {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+    .apply {
+        width: 9rem;
+        height: 3rem;
+        position: relative;
+        top: 1rem;
+    }
+    .settTimeHead {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        height: 2rem;
+        margin-bottom: 1rem;
+        font-size: 1rem;
+        padding-right: 3rem;
+        padding-top: 0.9rem;
+    }
+    .spansCont>p {
+        font-size: 1rem;
+    }
+    .settHead {
+        font-size: 2rem;
+    }
+}
+
+@media screen and (min-width: 300px) and (max-width: 499px) and (min-height: 700px) and (max-height: 750px) {
+    .settingsWrapper {
+        height: 77vh;
+        width: 95vw;
+        border-radius: 10px;
+    }
+    .settFlex {
+        flex-direction: column;
+    }
+    .settTime {
+        display: flex;
+        align-items: flex-start;
+        flex-direction: row;
+        width: 95%;
+        margin: auto;
+        height: 3.5rem;
+    }
+    .changeDir {
+        width: 100%;
+    }
+    .changeDir>p {
+        display: inline-block;
+        width: 47%;
+        font-size: 1.1rem;
+    }
+    .changeDir>input {
+        width: 50%;
+        display: inline-block;
+        padding-left: 10px;
+    }
+    .navSett>i {
+        position: relative;
+        bottom: 0.1rem;
+    }
+    .spansCont {
+        width: 90%;
+        height: 16%;
+    }
+    .spansDiv {
+        width: 70%;
+    }
+    .spansDiv>div {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+    .apply {
+        width: 9rem;
+        height: 3rem;
+        position: relative;
+        top: 1rem;
+    }
+    .settTimeHead {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        height: 2rem;
+        margin-bottom: 1rem;
+        font-size: 1rem;
+        padding-right: 3rem;
+        padding-top: 0.9rem;
+    }
+    .spansCont>p {
+        font-size: 1rem;
+    }
+    .settHead {
+        font-size: 2rem;
+    }
+}
+
+
+/* For long mobile */
+
+@media screen and (min-width: 300px) and (max-width: 499px) and (min-height: 751px) and (max-height: 900px) {
+    .selectBar {
+        max-width: 95vw;
+        margin: 0 auto;
+    }
+    .outsideClock {
+        width: 20rem;
+        height: 20rem;
+    }
+    .clock {
+        width: 20rem;
+        height: 20rem;
+    }
+    .pomoNav {
+        width: 20%;
+        font-size: 1rem;
+    }
+    svg {
+        position: absolute;
+        bottom: -5rem;
+    }
+    circle {
+        r: 120;
+    }
+    .time {
+        font-size: 5rem;
+    }
+    .pause {
+        font-size: 1rem;
+        padding-left: 1rem;
+    }
+    body {
+        overflow: hidden;
+    }
+    i {
+        margin-bottom: 1rem;
+    }
+    .settingsWrapper {
+        height: 67vh;
+        width: 95vw;
+    }
+    .settIcon {
+        display: none;
+        margin-top: -3.5rem;
+    }
+    /* paste */
+    .settingsWrapper {
+        height: 68vh;
+        width: 95vw;
+        border-radius: 10px;
+    }
+    .settFlex {
+        flex-direction: column;
+    }
+    .settTime {
+        display: flex;
+        align-items: flex-start;
+        flex-direction: row;
+        width: 95%;
+        margin: auto;
+        height: 3.5rem;
+    }
+    .changeDir {
+        width: 100%;
+    }
+    .changeDir>p {
+        display: inline-block;
+        width: 47%;
+        font-size: 1.1rem;
+    }
+    .changeDir>input {
+        width: 50%;
+        display: inline-block;
+        padding-left: 10px;
+    }
+    .navSett>i {
+        position: relative;
+        bottom: 0.1rem;
+    }
+    .spansCont {
+        width: 90%;
+        height: 16%;
+    }
+    .spansDiv {
+        width: 70%;
+    }
+    .spansDiv>div {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+    .apply {
+        width: 9rem;
+        height: 3rem;
+        position: relative;
+        top: 1rem;
+    }
+    .settTimeHead {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        height: 2rem;
+        margin-bottom: 1rem;
+        font-size: 1rem;
+        padding-right: 3rem;
+        padding-top: 0.9rem;
+    }
+    .spansCont>p {
+        font-size: 1rem;
+    }
+    .settHead {
+        font-size: 2rem;
+    }
+}
+
+@media screen and (min-width: 750px) and (max-width: 1024px) and (height: 600px) {
+    body {
+        overflow-y: scroll;
+    }
+    /* paste */
+    .settingsWrapper {
+        height: 83vh;
+        width: 55vw;
+        border-radius: 10px;
+    }
+    .changeDir>p {
+        font-size: 1.25rem;
+    }
+    .navSett>i {
+        position: relative;
+        bottom: 0.1rem;
+    }
+    .spansCont {
+        width: 90%;
+        height: 16%;
+    }
+    .spansDiv {
+        width: 70%;
+    }
+    .spansDiv>div {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+    .apply {
+        width: 9rem;
+        height: 3rem;
+        position: relative;
+        top: 2rem;
+    }
+    .settTimeHead {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        height: 2rem;
+        margin-bottom: 1rem;
+        font-size: 1rem;
+        padding-right: 3rem;
+        padding-top: 0.9rem;
+    }
+    .spansCont>p {
+        font-size: 1rem;
+    }
+    .settHead {
+        font-size: 2rem;
+    }
+}
+
+@media screen and (min-width: 500px) and (max-width: 600px) and (min-height: 600px) and (max-height: 750px) {
+    .settIcon {
+        position: absolute;
+        top: 100%;
+    }
+}
+
+@media screen and (min-width: 500px) and (max-width: 1500px) and (min-height: 599px) and (max-height: 850px) {
+    body {
+        overflow: hidden;
+    }
+    .settingsWrapper {
+        height: 70vh;
+        width: 90vw;
+    }
+    .outsideClock {
+        width: 20rem;
+        height: 20rem;
+        margin-top: 2rem;
+        box-shadow: inset 0 0 2px 30px #2c2851da, -1rem -1rem 35px 5px #232955b0, -35px -20px 50px 5px #212447, 2px 5px 15px 10px rgba(23, 12, 37, 0.795);
+    }
+    .clock {
+        width: 20rem;
+        height: 20rem;
+        box-shadow: inset 80px 3.5rem 50px 5px #151932
+    }
+    .pomoNav {
+        min-width: 20%;
+        font-size: 1rem;
+    }
+    svg {
+        position: absolute;
+        bottom: -5rem;
+    }
+    circle {
+        r: 125;
+    }
+    .time {
+        font-size: 4rem;
+    }
+    .pause {
+        font-size: 0.9rem;
+        padding-left: 1rem;
+    }
+}

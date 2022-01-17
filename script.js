@@ -86,17 +86,18 @@ class clockSetup {
         // logic variables
 
         this.inputBarCheck = 3;
-        this.inputStoreArr = [2, 5, 15];
+        this.inputStoreArr = [1, 5, 15];
         this.selectedFont = this.fontDiv1;
         this.selectedColor = this.colorSpan1;
         this.checkForCorrectInputs = false;
         this.pauseCheck = false;
         this.clockClicked = false;
         this.selectBarTracker = 0;
-        this.minuteTracker = 0;
-        this.secondTracker = 0;
+        this.minuteTracker = 24;
+        this.secondTracker = 60;
         this.checkInterval = false;
         this.clearIntervalWhenChanged = 0;
+        this.numberTime = 1000;
     }
 
     get settBtnClick() {
@@ -120,7 +121,6 @@ class clockSetup {
             this.sbChildren.forEach(item => {
                 item.style.pointerEvents = "auto";
             })
-
         })
     }
 
@@ -155,7 +155,7 @@ class clockSetup {
             // if (this.clearIntervalWhenChanged == 0) {
             //     this.numberSetup();
             // }
-            // this.clearIntervalWhenChanged += 1;
+            this.clearIntervalWhenChanged += 1;
 
             // else if (this.clearIntervalWhenChanged > 0) {
             //     clearInterval(this.numberInterval)
@@ -211,7 +211,7 @@ class clockSetup {
                 this.clearIntervalWhenChanged++;
                 if (this.clearIntervalWhenChanged > 1) {
                     clearInterval(this.numberInterval);
-                    console.log("intervalCleared")
+                    console.log("intervalCleared");
                 }
 
                 // this.numberSetup();
@@ -272,9 +272,11 @@ class clockSetup {
         if (this.pauseCheck == true) {
             this.progressBar.style.animationPlayState = "paused";
         } else {
-            setTimeout(() => {
-                this.progressBar.style.animationPlayState = "running";
-            }, 1000);
+            this.secondTracker -= 1;
+            if (this.secondTracker < 0) this.secondTracker = 59;
+            this.clockTime.innerText = `${String(this.minuteTracker)}:${String(this.secondTracker)}`;
+            this.progressBar.style.animationPlayState = "running";
+            this.setProgressBar()
         }
         if (this.pauseCheck == true) {
             clearInterval(this.numberInterval);
@@ -298,19 +300,23 @@ class clockSetup {
     }
 
     numberSetup() {
+
         this.numberInterval = setInterval(() => {
+            if (this.secondTracker < 0) {
+                this.minuteTracker -= 1;
+                this.secondTracker = 59;
+            }
             this.secondTracker -= 1;
             // this.secondTracker -= 1;
-            if (this.secondTracker < 0) {
-                this.secondTracker = 59;
-                this.minuteTracker -= 1;
-            }
             // if (this.selectBarTracker == 0) {
             //     this.minuteTracker = 5;
             //     this.secondTracker = 60;
             // };
             if (this.minuteTracker == 0 && this.secondTracker == 0) {
                 clearInterval(this.numberInterval);
+            }
+            if (this.clearIntervalWhenChanged == 0) {
+                this.minuteTracker = 24;
             }
             this.clockTime.innerText = `${String(this.minuteTracker)}:${String(this.secondTracker)}`;
             if (this.secondTracker < 10) {
@@ -329,3 +335,4 @@ clockStp.crossClick;
 clockStp.changeSelectBarClasses();
 clockStp.checkForSpace();
 clockStp.checkForDocumentClick();
+clockStp.checkForPause();

@@ -732,7 +732,7 @@ class clock extends settingMenuInputsToClock {
             this.changeClockTimeText("");
             this.checkIfSecondTrackerIsLessThanTen();
             this.rotateProgressBar();
-        }, 10);
+        }, 1000);
 
     };
 

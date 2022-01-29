@@ -1,6 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lato&family=Rubik&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Azeret+Mono:wght@600&family=Noto+Sans+Mono:wght@600&family=Roboto+Mono:wght@600&display=swap');
+@import url("https://use.typekit.net/rpb7rgb.css");
+@font-face {
+    src: url("FontsInUse/BergenMono-Regular.otf");
+    font-family: BergenMono;
+}
+
+@font-face {
+    font-family: LumberTypeface;
+    src: url("./FontsInUse/Lumber-Regular.ttf");
+}
+
 :root {
     --animateDuration: 1500s;
 }
@@ -15,6 +27,7 @@ body {
     background: #1E2140;
     color: white;
     overflow: hidden;
+    font-kerning: none;
 }
 
 .para {
@@ -32,7 +45,7 @@ body {
     user-select: none;
 }
 
-.selectBar {
+.periodBar {
     height: 4.5rem;
     max-width: 35vw;
     display: flex;
@@ -45,7 +58,7 @@ body {
     padding: 7px;
 }
 
-.selectBar>span {
+.periodBar>span {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -57,7 +70,7 @@ body {
     user-select: none;
 }
 
-.selectBar>span:nth-child(1) {
+.periodBar>span:nth-child(1) {
     letter-spacing: 0;
 }
 
@@ -98,7 +111,6 @@ body {
     min-width: 100%;
     text-align: center;
     font-size: 7rem;
-    font-family: rubik;
     position: absolute;
     top: 47%;
     left: 47%;
@@ -107,6 +119,8 @@ body {
     user-select: none;
     text-shadow: 3px 5px 2px #505997;
     mix-blend-mode: screen;
+    letter-spacing: -5px;
+    font-family: LumberTypeface;
 }
 
 .pause {
@@ -344,15 +358,15 @@ input[type=number]::-webkit-inner-spin-button {
 }
 
 .fontSpans>div:nth-child(1) {
-    font-family: lato;
+    font-family: BergenMono, monospace;
 }
 
 .fontSpans>div:nth-child(2) {
-    font-family: rubik;
+    font-family: hack, monospace;
 }
 
 .fontSpans>div:nth-child(3) {
-    font-family: montserrat;
+    font-family: LumberTypeface, monospace;
 }
 
 .selectedFont {
@@ -451,7 +465,7 @@ input[type=number]::-webkit-inner-spin-button {
 /* Bigger than Desktop */
 
 @media screen and (min-width: 1401px) and (max-width: 1800px) {
-    .selectBar {
+    .periodBar {
         max-width: 42vw;
     }
     .outsideClock {
@@ -467,7 +481,7 @@ input[type=number]::-webkit-inner-spin-button {
 }
 
 @media screen and (min-width: 1101px) and (max-width: 1400px) {
-    .selectBar {
+    .periodBar {
         max-width: 45vw;
     }
     .outsideClock {
@@ -486,7 +500,7 @@ input[type=number]::-webkit-inner-spin-button {
 /* For Desktop View */
 
 @media screen and (min-width: 1024px) and (max-width: 1100px) {
-    .selectBar {
+    .periodBar {
         max-width: 59vw;
     }
     .outsideClock {
@@ -505,7 +519,7 @@ input[type=number]::-webkit-inner-spin-button {
 /* For Tablet View */
 
 @media screen and (min-width: 850px) and (max-width: 1024px) {
-    .selectBar {
+    .periodBar {
         max-width: 67vw;
     }
     .outsideClock {
@@ -529,7 +543,7 @@ input[type=number]::-webkit-inner-spin-button {
 /* For Small Tablet */
 
 @media screen and (min-width: 768px) and (max-width: 850px) {
-    .selectBar {
+    .periodBar {
         max-width: 75vw;
     }
     .outsideClock {
@@ -562,7 +576,7 @@ input[type=number]::-webkit-inner-spin-button {
 /* marked place */
 
 @media screen and (min-width: 500px) and (max-width: 767px) {
-    .selectBar {
+    .periodBar {
         max-width: 95vw;
     }
     .outsideClock {
@@ -580,6 +594,9 @@ input[type=number]::-webkit-inner-spin-button {
     .settingsWrapper {
         width: 90vw;
     }
+    /* .settIcon {
+        margin-bottom: 25rem;
+    } */
 }
 
 
@@ -589,7 +606,7 @@ input[type=number]::-webkit-inner-spin-button {
 /* For very short mobile */
 
 @media screen and (min-width: 300px) and (max-width: 499px) and (min-height: 400px) and (max-height: 599px) {
-    .selectBar {
+    .periodBar {
         max-width: 95vw;
         margin-top: 1rem;
         margin-top: -1rem;
@@ -702,7 +719,7 @@ input[type=number]::-webkit-inner-spin-button {
 /* For short mobile */
 
 @media screen and (min-width: 300px) and (max-width: 499px) and (min-height: 600px) and (max-height: 750px) {
-    .selectBar {
+    .periodBar {
         max-width: 95vw;
         margin-top: 2rem;
     }
@@ -881,7 +898,7 @@ input[type=number]::-webkit-inner-spin-button {
 /* For long mobile */
 
 @media screen and (min-width: 300px) and (max-width: 499px) and (min-height: 751px) and (max-height: 900px) {
-    .selectBar {
+    .periodBar {
         max-width: 95vw;
         margin: 0 auto;
     }
@@ -1055,7 +1072,10 @@ input[type=number]::-webkit-inner-spin-button {
 
 @media screen and (min-width: 500px) and (max-width: 1500px) and (min-height: 599px) and (max-height: 850px) {
     body {
-        overflow: hidden;
+        overflow: auto;
+    }
+    .periodBar {
+        width: 60vw;
     }
     .settingsWrapper {
         height: 70vh;
@@ -1089,5 +1109,8 @@ input[type=number]::-webkit-inner-spin-button {
     .pause {
         font-size: 0.9rem;
         padding-left: 1rem;
+    }
+    .settIcon {
+        top: 85%;
     }
 }

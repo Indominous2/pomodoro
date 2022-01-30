@@ -6,7 +6,7 @@ let periodBarChildsArr = document.querySelectorAll(".pomoNav");
 let clockTime = document.querySelector(".time");
 let rootSelector = document.querySelector(":root");
 let progressBar = document.querySelector("circle");
-
+let responsiveEventListenerForAllDevices = ["touchend", "click", ]
 
 
 
@@ -161,7 +161,7 @@ class clockSetup {
 
     changePeriodBarClasses() {
         periodBarChildsArr.forEach(item => {
-            item.addEventListener('click', () => {
+            item.addEventListener("click", () => {
                 clearInterval(this.numberInterval)
                 if (item == periodBarChildsArr[0]) {
                     this.periodBarTracker = 0;
@@ -291,8 +291,12 @@ class clockSetup {
 
     checkForClockContClick() {
         let clockCont = document.querySelector(".clock");
-        clockCont.addEventListener('click', () => {
-            // alert(true)
+        clockCont.addEventListener("click", () => {
+            alert(true)
+            this.checkForPause();
+        })
+        clockCont.addEventListener("touch", () => {
+            alert(true)
             this.checkForPause();
         })
     }
@@ -453,6 +457,7 @@ class settingMenuInputsToClock {
 
     settingMenuInuptsToClockFunc() {
         if (this.checkForMenuPeriodInputs() === true) return; // if this.checkforMenuPeriodInputs function is true then settingMenuInuptsToClockFunc function will not do anything!
+        alert(true)
         this.setOpacityToHeadingAndPeriodBar("1");
         this.setMenuItemsToVariablesAndArr(); // setting Menu Items to variables and array For Clock and other stuff;
         this.settingsMenu.style.display = "none";
@@ -496,7 +501,6 @@ class settingMenuInputsToClock {
     };
 
     setClockTime() {
-            console.log(this.periodBarTracker);
             this.minuteTracker = (this.inputStoreArr[this.periodBarTracker]);
             clockTime.innerText = `${this.minuteTracker}:${this.secondTracker = `00`}`;
     };
@@ -545,8 +549,12 @@ class clock extends settingMenuInputsToClock {
     }
 
     applyBtnClickEvent() {
-        this.applyBtn.addEventListener("click", () => {
-            if (this.checkForMenuPeriodInputs() === true) return;
+        this.applyBtn.addEventListener("click", () => this.applyBtnStuff());
+        // this.applyBtn.addEventListener("touchend", () => this.applyBtnStuff);
+    }
+
+    applyBtnStuff() {
+        if (this.checkForMenuPeriodInputs() === true) return;
             this.pauseCheck = true;
             this.removeClassFromLastTimeLeftChildInPeriodBar();
             this.setMenuItemsToVariablesAndArr();
@@ -556,28 +564,40 @@ class clock extends settingMenuInputsToClock {
             this.setNumIncrementerToDefault();
             this.setProgressBarToStartPos();
             this.setBackgroundForPeriodBarAccordingToMenu();
-        })
+            this.setAllPeriodBarChildsSelectionToAuto();
     }
 
     // CHANGING BETWEEN PERIOD BAR CHILDS
 
     switchChildsOfPeriodBar() {
-        return periodBarChildsArr.forEach(item => item.addEventListener('click', () => { // Change or Do stuff when clicked on a period Bar Child;
-            this.changePeriodBarChildsStuff(item);
-            this.setPeriodBarTrackerValue();
-            this.setMenuItemsToVariablesAndArr();
-            this.setClockTime();
-            this.clearIntervalOfClock();
-            this.rotateBackBar();
-            this.pauseCheck = true;
-            this.checkForPause();
-            this.setNumIncrementerToDefault()
-            this.setProgressBarToStartPos();
-            // this.setPomodoro();
-            this.setBackTotheTrackOfSetPomodoro();
-            this.setBackgroundForPeriodBarAccordingToMenu();
+        periodBarChildsArr.forEach(item => item.addEventListener("click", () => { 
+            this.switchperiodBar(item);
         }));
     };
+
+    switchPeriodBarMobileVersion() {
+        periodBarChildsArr.forEach(item => {
+            item.addEventListener("touchend", () => {
+                this.switchperiodBar(item);
+            })
+        })
+    }
+
+    switchperiodBar(item) {     
+        this.changePeriodBarChildsStuff(item);
+        this.setPeriodBarTrackerValue();
+        this.setMenuItemsToVariablesAndArr();
+        this.setClockTime();
+        this.clearIntervalOfClock();
+        this.rotateBackBar();
+        this.pauseCheck = true;
+        this.checkForPause();
+        this.setNumIncrementerToDefault()
+        this.setProgressBarToStartPos();
+        // this.setPomodoro();
+        this.setBackTotheTrackOfSetPomodoro();
+        this.setBackgroundForPeriodBarAccordingToMenu();
+    }
 
     setBackgroundForPeriodBarAccordingToMenu() {
         periodBarChildsArr.forEach(item => {
@@ -587,6 +607,7 @@ class clock extends settingMenuInputsToClock {
             }
         })
     }
+
 
     setNumIncrementerToDefault() {
         return this.numberIncrementer = 1;
@@ -614,54 +635,6 @@ class clock extends settingMenuInputsToClock {
     }
 
 
-
-
-
-
-    // CSB HELP
-
-    // csbHelp() {
-    //     if (periodBarChildsArr[1].classList.contains("sbBackground")) {
-
-    //         this.rotateBackBar(1);
-
-    //     } else if (periodBarChildsArr[2].classList.contains("sbBackground")) {
-    //         this.rotateBackBar(2);
-
-    //     } else {
-    //         this.rotateBackBar(0);
-    //     }
-    // }
-
-    // setProgressBar() {
-    //     if (this.pauseCheck == false) {
-    //         this.progressBar.classList.add("rotateBar");
-    //     }
-    //     // this.progressBar.style.animationDuration = `${this.inputStoreArr[0] * 60}s`
-    //     this.progressBar.addEventListener("animationend", () => {
-    //         this.alarmSound.play();
-
-    //         clearInterval(this.numberInterval);
-    //         this.minuteTracker = this.inputStoreArr[this.periodBarTracker];
-    //         this.secondTracker = 0;
-    //         clockTime.innerText = `${String(this.minuteTracker)}:${String(this.secondTracker)}0`;
-
-    //         this.pauseCheck = true;
-    //         // this.periodBarTracker += 1;
-
-    //         // if (this.periodBarTracker > 2) {
-    //         //     this.periodBarTracker = 0;
-    //         // }
-
-
-
-    //         // periodBarChildsArr.forEach(item => {
-    //         //     item.classList.remove("sbBackground");
-    //         //     console.log(periodBarChildsArr);
-    //         // })
-
-    //     }, { once: true })
-    // };
 
     rotateBackBar() {
         this.progressBar.classList.add('rotateBack');
@@ -694,9 +667,7 @@ class clock extends settingMenuInputsToClock {
 
     restartClockFunc() { // reset timer again when user clicks the timer when minute and seconds are 0;
         if (this.minuteTracker == 0 && this.secondTracker == 0) {
-            // this.clearIntervalOfClock();
             this.setClockTime();
-            // this.changeClockTimeText("0");
             this.setPomodoro();
             clearInterval(this.numberInterval);
             this.pausecheck = false;
@@ -716,8 +687,8 @@ class clock extends settingMenuInputsToClock {
     }
 
     checkForClockContClick() {
-        let clockCont = document.querySelector(".clock");
-        clockCont.addEventListener('click', () => this.checkForPause())
+        let clockCont = document.querySelector(".time");
+        clockCont.addEventListener("click", () => this.checkForPause())
     }
 
 
@@ -770,18 +741,13 @@ class clock extends settingMenuInputsToClock {
 
     // progress bar logic
     rotateProgressBar() {
-        // console.log(this.minuteTracker);
         this.progressBar.style.strokeDashoffset = this.getOneRotateValue () * this.numberIncrementer;
         this.progressBar.style.strokeLinecap = "round";
-        // console.log(window.getComputedStyle(this.progressBar).strokeDashoffset);
     };
 
     getOneRotateValue() {
         this.getMinuteForProgressBar = this.inputStoreArr[this.periodBarTracker];
-        // console.log(this.getMinuteForProgressBar);
-        // console.log(this.numberIncrementer);
         this.oneTimeRotateValue = 1310 / (this.getMinuteForProgressBar * 60) ;
-        // console.log(this.oneTimeRotateValue * 60)
         return this.oneTimeRotateValue;
     }
 
@@ -892,6 +858,8 @@ class clock extends settingMenuInputsToClock {
 // Invoking clock Class functions;
 let clockClassVar = new clock();
 clockClassVar.checkForClockContClick();
+clockClassVar.spaceBarPauseCheck();
 clockClassVar.switchChildsOfPeriodBar();
+clockClassVar.switchPeriodBarMobileVersion();
 clockClassVar.applyBtnClickEvent();
 clockClassVar.removeClassFromLastTimeLeftChildInPeriodBar();

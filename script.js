@@ -292,11 +292,9 @@ class clockSetup {
     checkForClockContClick() {
         let clockCont = document.querySelector(".clock");
         clockCont.addEventListener("click", () => {
-            alert(true)
             this.checkForPause();
         })
         clockCont.addEventListener("touch", () => {
-            alert(true)
             this.checkForPause();
         })
     }
@@ -457,7 +455,6 @@ class settingMenuInputsToClock {
 
     settingMenuInuptsToClockFunc() {
         if (this.checkForMenuPeriodInputs() === true) return; // if this.checkforMenuPeriodInputs function is true then settingMenuInuptsToClockFunc function will not do anything!
-        alert(true)
         this.setOpacityToHeadingAndPeriodBar("1");
         this.setMenuItemsToVariablesAndArr(); // setting Menu Items to variables and array For Clock and other stuff;
         this.settingsMenu.style.display = "none";
@@ -564,7 +561,7 @@ class clock extends settingMenuInputsToClock {
             this.setNumIncrementerToDefault();
             this.setProgressBarToStartPos();
             this.setBackgroundForPeriodBarAccordingToMenu();
-            this.setAllPeriodBarChildsSelectionToAuto();
+            // this.setAllPeriodBarChildsSelectionToAuto();
     }
 
     // CHANGING BETWEEN PERIOD BAR CHILDS
@@ -607,8 +604,7 @@ class clock extends settingMenuInputsToClock {
             }
         })
     }
-
-
+    setNumToDefault() {};
     setNumIncrementerToDefault() {
         return this.numberIncrementer = 1;
     }
